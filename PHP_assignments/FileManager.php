@@ -61,16 +61,21 @@ if(isset($_POST['file_name_edited']) AND $_POST['file_name_edited'] != '') {
 }
 
 
-// Failu ir direktoriju istrynimas
-if(isset($_GET['delete']) AND $_GET['delete'] != '') {
-  if($_GET['delete'] === basename(__FILE__)) {
-      header('Location: ?dir=' . $dir . '&m=Cannot delete main file');
-} else {
+//Failu ir direktoriju istrynimas
+// if(isset($_GET['delete']) AND $_GET['delete'] != '') {
+//   if($_GET['delete'] === basename(__FILE__)) {
+//       header('Location: ?dir=' . $dir . '&m=Cannot delete main file');
+// } else {
 
+//   unlink($_GET['delete']);
+//   header('Location: ?dir=' . $dir);
+//   }
+// } 
+
+if(isset($_GET['delete']) AND $_GET['delete'] != '') {
   unlink($_GET['delete']);
   header('Location: ?dir=' . $dir);
   }
-} 
 
 
 //Failo ikelimas
@@ -168,7 +173,6 @@ unset($data[1]);
                    }
                    ?>
                    
-                <!--EDIT ir DELETE mygtukai -->
                 </td>
                 <td>
                   <a href="?edit=<?= $path ?>&dir=<?= $dir ?>" class="btn btn-success">Edit</a> 
