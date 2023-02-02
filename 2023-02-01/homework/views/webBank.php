@@ -1,23 +1,16 @@
-<?php 
 
-session_start(); 
+<?php if(
+  isset($_POST['id']) AND
+  $_POST['id'] === '65451351' AND 
+  isset($_POST['pass']) AND
+  $_POST['pass'] === '1234'
+  ) { 
+      $_SESSION['id'] = '65451351';
+      header('Location: ?page=account');
+  }
+    
+    ?>
 
-
-
-?>
-
-
-
-<?php if($_POST['id'] === '65451351' AND $_POST['pass'] === '1234') { ?>
-
-<div class="container" style="width:200px">
-  <p>Sąskaitos numeris: LT5515615616515615</p>
-  <p>Vardas pavardė: Motiejus Aleksandravičius</p>
-  <p>Sąskaitos likutis: 9.99 eur.</p>
-</div>
-
-
-<?php } else {?>
 
 <form class="form-signin m-auto mt-5" method="POST" style="width:200px">
   <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-check-circle mb-2" viewBox="0 0 16 16">
@@ -34,17 +27,9 @@ session_start();
       <input type="password" class="form-control" id="floatingPassword" name="pass" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
   </form>
 
-  <?php } ?>
 
 
 

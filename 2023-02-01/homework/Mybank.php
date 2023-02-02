@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +35,14 @@ switch($page) {
   case 'webBank':
     include('./views/webBank.php');
     break;
-    default:
+  case 'account' :
+    include('./views/account.php');
+    break;
+  case 'logout' :
+    session_destroy();
+    include('./views/webBank.php');
+    break;
+  default:
     include('./views/home.php');
 }
 ?>
