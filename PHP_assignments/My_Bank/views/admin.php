@@ -15,11 +15,21 @@ if($_SESSION['user']->role === '0') {
 
   if(!empty($_POST)  AND $action === 'new_user') {
 
+   $exists =  array_filter($data, function($user) {
+      if($_POST['id'] === $user->id OR $_POST['iban'] === $user->iban)
+          return $user;
+    });
+
+    if(count($exists) > 0) {
+      header('Location: ?page=admin&message=Toks ID arba Sąskaitos numeris jau egzistuoja&status=danger');
+      exit;
+    }
+
     $data[] = $_POST;
 
     file_put_contents('database.json', json_encode($data));
 
-    header('Location: ?page=admin');
+    header('Location: ?page=admin&message=Vartotojas sėkmingai sukurtas&status=success');
 
     exit;
   }
@@ -50,7 +60,14 @@ if($_SESSION['user']->role === '0') {
 <h1 class="d-flex justify-content-between align-items-center">Administratorius
   <a href="?page=admin&action=new_user" class="btn btn-primary">Nauja sąskaita</a>
 </h1>
+
+<?php if(isset($_GET['message'])) : ?>
+<div class="alert alert-<?= $_GET['status'] ?>">
+    <?= $_GET['message'] ?>
+</div>
+<?php endif; ?>
 <table class="table">
+
 <thead>
       <tr>
         <th>#ID</th>
