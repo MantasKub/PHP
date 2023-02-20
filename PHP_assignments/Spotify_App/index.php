@@ -33,12 +33,12 @@
         case 'register':
           include './views/pages/register.php';
           break;
-          case 'login':
-            include './views/pages/login.php';
-            break;
-            case 'admin':
-              include './views/pages/admin.php';
-              break;
+        case 'login':
+          include './views/pages/login.php';
+          break;
+        case 'admin':
+          include './views/pages/admin.php';
+          break;
         default:
           include './views/pages/main.php';
       }

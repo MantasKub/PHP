@@ -23,6 +23,7 @@
     $_SESSION['user']['role'] = $user[1];
 
     header('Location: index.php');
+    exit;
   }
 ?>
 
