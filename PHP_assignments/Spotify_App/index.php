@@ -39,6 +39,9 @@
         case 'admin':
           include './views/pages/admin.php';
           break;
+        case 'playlist':
+          include './views/pages/playlist.php';
+          break;
         default:
           include './views/pages/main.php';
       }

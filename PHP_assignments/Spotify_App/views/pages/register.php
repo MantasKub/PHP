@@ -10,7 +10,12 @@
     ];
 
 
-    if($db->query("INSERT INTO users (email, password) VALUES ('{$email}', '{$password}')")) {
+    if($db->query(
+      vsprintf("INSERT INTO users (email, first_name, last_name, password) VALUES ('%s', '%s', '%s', '%s')",
+        [$email, $_POST['first_name'], $_POST['last_name'], $password]
+        )
+      ) 
+    ) {
 
       header('Location: ?' . http_build_query($params));
     }
@@ -23,6 +28,14 @@
   <div class="mb-3">
     <label>Email</label>
     <input type="email" name="email" placeholder="test@gmail.com" class="form-control" required />
+  </div>
+  <div class="mb-3">
+    <label>First Name</label>
+    <input type="text" name="first_name" placeholder="vardenis" class="form-control" required />
+  </div>
+  <div class="mb-3">
+    <label>Last Name</label>
+    <input type="text" name="last_name" placeholder="pavardenis" class="form-control" required />
   </div>
   <div class="mb-3">
     <label>Password</label>
