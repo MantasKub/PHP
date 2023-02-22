@@ -12,11 +12,15 @@
         )
       );
 
-      $id =  $db->insert_id;
+      $id = $db->insert_id;
 
-      $db->query("UPDATE songs SET playlist_id = {$id} WHERE id = {$_POST['song']}");
+      foreach($_POST['song'] as $song_id) {
+      $db->query("INSERT INTO song_playlist (song_id, playlist_id) VALUES ({$song_id}, {$id})");
+      }
 
-      // header('Location: index.php');
+      // $db->query("UPDATE songs SET playlist_id = {$id} WHERE id = {$_POST['song']}");
+
+      header('Location: index.php');
   }
 
   $playlists = $db->query("SELECT p.id, p.name, p.user_id, p.created_at, u.first_name, u.last_name FROM playlists AS p INNER JOIN users AS u ON u.id = p.user_id;");
@@ -60,11 +64,14 @@
   </div>
   <div class="mb-3">
     <label>Song:</label>
-    <select name="song" class="form-control">
-      <?php foreach($songs as $song) : ?>
-        <option value="<?=$song['id'] ?>"><?=$song['name']; ?></option>
-      <?php endforeach; ?>
-    </select>
+    <?php foreach($songs as $song) : ?>
+      <div class="form-ckeck">
+        <label>
+          <input type="checkbox" name="song[]" class="form-check-input" value="<?=$song['id']; ?>" />
+          <?=$song['name']; ?>
+      </label>
+    </div>
+    <?php endforeach; ?>
   </div>
   <button class="btn btn-primary">Create Playlist</button>
 </form>
