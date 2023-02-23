@@ -23,10 +23,9 @@
   <div class="col-md-3 text-end me-2">
     <?php
     if(!empty($_SESSION) && $_SESSION['user'] != "") { ?>
-        <a type="button" class="btn btn=success" href="?page=login">Log-out</a> 
-        <?php session_destroy() ?>
+        <a type="button" class="btn btn-success" href="?page=logout">Log-out</a> 
       <?php } else { ?>
-        <a class="btn btn=success" href="?page=register">Sign-up</a> 
+        <a class="btn btn-success" name="log_out" href="?page=register">Sign-up</a>
       <?php } ?>
     
   </div>

@@ -1,0 +1,11 @@
+body {
+  background-color: green;
+}
+
+.songs_table {
+  border: solid 5px black;
+}
+
+a {
+  text-decoration: none;
+}

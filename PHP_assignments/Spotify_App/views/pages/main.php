@@ -32,46 +32,50 @@
 
 <h1>Discover songs</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>User</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach($playlists as $playlist) : 
-      ?>
-      <tr>
-        <td><?= $playlist['id']; ?></td>
-        <td>
-          <a href="?page=playlist&playlist_id=<?=$playlist['id']; ?>">
-            <?= $playlist['name']; ?>
-          </a>
-        </td>
-        <td><?= $playlist['first_name'] . ' ' . $playlist['last_name']; ?></td>
-      </tr>
-      <?php endforeach; ?>
-  </tbody>
-</table>
-
-<form method="POST">
-  <h2>Create new playlist</h2>
-  <div class="mb-3">
-    <label>Playlist Name:</label>
-    <input type="text" name="name" class="form-control" />
-  </div>
-  <div class="mb-3">
-    <label>Song:</label>
-    <?php foreach($songs as $song) : ?>
-      <div class="form-ckeck">
-        <label>
-          <input type="checkbox" name="song[]" class="form-check-input" value="<?=$song['id']; ?>" />
-          <?=$song['name']; ?>
-      </label>
+<div class="mb-3">
+  <form method="POST">
+    <h2>Create new playlist</h2>
+    <div class="mb-3">
+      <label>Playlist Name:</label>
+      <input type="text" name="name" class="form-control" />
     </div>
-    <?php endforeach; ?>
-  </div>
-  <button class="btn btn-primary">Create Playlist</button>
-</form>
+    <div class="mb-3">
+      <label>Song:</label>
+      <?php foreach($songs as $song) : ?>
+        <div class="form-ckeck">
+          <label>
+            <input type="checkbox" name="song[]" class="form-check-input" value="<?=$song['id']; ?>" />
+            <?=$song['name']; ?>
+        </label>
+      </div>
+      <?php endforeach; ?>
+    </div>
+    <button class="btn btn-primary">Create Playlist</button>
+  </form>
+</div>
+
+<div class="songs_table mb-3">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($playlists as $playlist) : 
+        ?>
+        <tr>
+          <td><?= $playlist['id']; ?></td>
+          <td>
+            <a href="?page=playlist&playlist_id=<?=$playlist['id']; ?>">
+              <?= $playlist['name']; ?>
+            </a>
+          </td>
+          <td><?= $playlist['first_name'] . ' ' . $playlist['last_name']; ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
