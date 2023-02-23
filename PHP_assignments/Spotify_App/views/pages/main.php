@@ -29,10 +29,8 @@
   $songs = $db->query("SELECT * FROM songs");
   $songs = $songs->fetch_all(MYSQLI_ASSOC);
 ?>
-
-<h1>Discover songs</h1>
-
-<div class="mb-3">
+<div class="container gap-3 d-flex">
+<div class=" playlist mb-3 col-3">
   <form method="POST">
     <h2>Create new playlist</h2>
     <div class="mb-3">
@@ -40,7 +38,7 @@
       <input type="text" name="name" class="form-control" />
     </div>
     <div class="mb-3">
-      <label>Song:</label>
+      <label>Songs:</label>
       <?php foreach($songs as $song) : ?>
         <div class="form-ckeck">
           <label>
@@ -54,7 +52,10 @@
   </form>
 </div>
 
-<div class="songs_table mb-3">
+<div class="songs_table mb-3 col-9">
+
+<h2 class="text-center mb-3 mt-3">Discover songs</h2>
+
   <table class="table">
     <thead>
       <tr>
@@ -78,4 +79,5 @@
         <?php endforeach; ?>
     </tbody>
   </table>
+</div>
 </div>
