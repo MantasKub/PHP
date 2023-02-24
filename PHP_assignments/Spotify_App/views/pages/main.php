@@ -20,7 +20,8 @@
 
       // $db->query("UPDATE songs SET playlist_id = {$id} WHERE id = {$_POST['song']}");
 
-      header('Location: index.php');
+      header('Location: ?page=main.php');
+      exit;
   }
 
   $playlists = $db->query("SELECT p.id, p.name, p.user_id, p.created_at, u.first_name, u.last_name FROM playlists AS p INNER JOIN users AS u ON u.id = p.user_id;");
@@ -48,7 +49,7 @@
       </div>
       <?php endforeach; ?>
     </div>
-    <button class="btn btn-primary">Create Playlist</button>
+    <button class="btn" href="?page=main">Create Playlist</button>
   </form>
 </div>
 
@@ -70,7 +71,7 @@
         <tr>
           <td><?= $playlist['id']; ?></td>
           <td>
-            <a href="?page=playlist&playlist_id=<?=$playlist['id']; ?>">
+            <a class="btn" href="?page=playlist&playlist_id=<?=$playlist['id']; ?>">
               <?= $playlist['name']; ?>
             </a>
           </td>

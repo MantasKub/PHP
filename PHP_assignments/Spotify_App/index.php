@@ -26,7 +26,7 @@
 
   
 
-  <div class="container mt-3">
+
 
     <?php include('views/components/header.php'); ?>
 
@@ -56,7 +56,7 @@
           session_destroy();
           header('Location: ?page=login');
           break;
-        case 'main';
+        case 'main':
           include './views/pages/main.php';
           break;
         default:
@@ -64,6 +64,6 @@
       }
 
     ?>
-  </div>
+
 </body>
 </html>

@@ -27,16 +27,19 @@
   }
 ?>
 
-<h1>Log in</h1>
+<div class="container mb-3 mt-3 col-3">
 
-<form method="POST">
-  <div class="mb-3">
-    <label>Email</label>
-    <input type="email" name="email" placeholder="test@gmail.com" class="form-control" required />
-  </div>
-  <div class="mb-3">
-    <label>Password</label>
-    <input type="password" name="password" class="form-control" required />
-  </div>
-  <button class="btn btn-primary">Log in</button>
-</form>
+  <h1>Log in</h1>
+
+  <form method="POST">
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" name="email" placeholder="test@gmail.com" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label>Password</label>
+      <input type="password" name="password" class="form-control" required />
+    </div>
+    <button class="btn btn-primary">Log in</button>
+  </form>
+</div>

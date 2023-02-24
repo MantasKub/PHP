@@ -1,7 +1,8 @@
+
+
 <main class="px-3 text-center">
-    <h1>Cover your page.</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <h1 class="mb-3">Make your own playlist and listen to others</h1>
     <p class="lead">
-      <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
+      <a class="btn btn-lg col-6" href="?page=main">Go to playlists</a>
     </p>
   </main>
