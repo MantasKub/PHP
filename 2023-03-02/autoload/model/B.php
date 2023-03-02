@@ -7,3 +7,5 @@ class B {
     return 'B klasė sveikinasi su klase A';
   }
 }
+
+?>

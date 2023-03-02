@@ -8,10 +8,13 @@
 
 //Automatinis klasių pridėjimas
 function autoload_classes($class) {
-  include 'models/' . $class . '.php';
+
+  if(is_file($class . '.php')) {
+      include $class . '.php';
+  }
 }
 
-// spl_autoload_register('autoload_classes');
+spl_autoload_register('autoload_classes');
 
 // $categories = new Categories();
 // $videos = new Videos();
@@ -72,10 +75,10 @@ $page = isset($_GET['page']) ? $_GET['page'] : '';
 
 switch($page) {
   case 'category':
-    Homepage::byCategory($_GET['id']);
+    Controllers\Homepage::byCategory($_GET['id']);
     break;
   default:
-    Homepage::index();
+  Controllers\Homepage::index();
 }
 
   ?>

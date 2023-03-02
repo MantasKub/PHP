@@ -1,5 +1,10 @@
 <?php
 
+namespace Controllers;
+
+use \Models\Videos;
+use \Models\Categories;
+
 class Homepage {
   public static function index() {
     $videos = new Videos();
@@ -22,3 +27,5 @@ class Homepage {
     include 'views/homepage.php';
   }
 }
+
+?>

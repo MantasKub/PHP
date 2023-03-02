@@ -1,5 +1,7 @@
 <?php 
 
+namespace Models;
+
 abstract class Database {
 
   const HOST = 'localhost';
@@ -16,8 +18,8 @@ abstract class Database {
         return;
 
     try {
-      self::$db = new mysqli(self::HOST, self::USER, self::PASSWORD, self::DATABASE);
-    } catch(Exception $e) {
+      self::$db = new \mysqli(self::HOST, self::USER, self::PASSWORD, self::DATABASE);
+    } catch(\Exception $e) {
         echo 'Database not responding';
         exit;
     }
@@ -68,3 +70,5 @@ abstract class Database {
     return self::$db->insert_id;
 }
 }
+
+?>

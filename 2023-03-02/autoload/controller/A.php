@@ -7,3 +7,5 @@ class A {
     return 'Sveiki Jums sako kontroleris A';
   }
 }
+
+?>
