@@ -24,8 +24,15 @@ class Videos extends Database
 
     $results->fetch_all(MYSQLI_ASSOC);
 
-
-    // Return the search results
     return $results;
+  }
+
+
+  //----------------Go to video--------------------????????????????????????????????
+  public function goToVideo($id)
+  {
+    $result = self::$db->query("SELECT * FROM $this->table WHERE id = $id");
+
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 }

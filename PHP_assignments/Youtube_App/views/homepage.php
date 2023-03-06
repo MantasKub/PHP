@@ -54,7 +54,7 @@
       foreach ($videos as $video) : ?>
         <li>
           <div class="thumbnail mb-1 mt-3">
-            <a href="<?= $video['video_url']; ?> ">
+            <a href="?page=video&id=<?= $video['id'] ?>">
               <img class="thumbnail_img" src="<?= $video['thumbnail_url'] ?>" />
               <label><?= $video['name'] ?></label>
             </a>

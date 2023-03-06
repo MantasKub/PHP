@@ -81,9 +81,9 @@ switch ($page) {
   case 'search':
     Controllers\Search::search();
     break;
-    // case 'video':
-    //   header('Location: ?page=video');
-    //   break;
+  case 'video':
+    Controllers\Video::toVideo($_GET['id']);
+    break;
   default:
     Controllers\Homepage::index();
 }
