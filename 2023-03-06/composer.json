@@ -1,0 +1,20 @@
+{
+  "name": "mantas/first-composer-app",
+  "description": "Simple composer app",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "Mantas\\FirstApp\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "MantasKub",
+      "email": "mkubiliunas@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "league/climate": "dev-master"
+  }
+}
