@@ -62,7 +62,7 @@ abstract class Database {
     self::$db->query("DELETE FROM $this->table WHERE id = $id");
   }
 
-  public function  getrecord() {
+  public function  getRecord() {
     return self::$db->insert_id;
   }
 
@@ -70,5 +70,3 @@ abstract class Database {
     return self::$db->insert_id;
 }
 }
-
-?>

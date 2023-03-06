@@ -7,10 +7,11 @@
 // include 'controllers/Homepage.php';
 
 //Automatinis klasių pridėjimas
-function autoload_classes($class) {
+function autoload_classes($class)
+{
 
-  if(is_file($class . '.php')) {
-      include $class . '.php';
+  if (is_file($class . '.php')) {
+    include $class . '.php';
   }
 }
 
@@ -73,12 +74,23 @@ spl_autoload_register('autoload_classes');
 
 $page = isset($_GET['page']) ? $_GET['page'] : '';
 
-switch($page) {
+switch ($page) {
   case 'category':
     Controllers\Homepage::byCategory($_GET['id']);
     break;
+  case 'search':
+    Controllers\Search::search();
+    break;
+    // case 'video':
+    //   header('Location: ?page=video');
+    //   break;
   default:
-  Controllers\Homepage::index();
+    Controllers\Homepage::index();
 }
 
-  ?>
+?>
+
+
+</body>
+
+</html>

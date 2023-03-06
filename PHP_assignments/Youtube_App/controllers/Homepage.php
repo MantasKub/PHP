@@ -4,7 +4,6 @@ namespace Controllers;
 
 use \Models\Videos;
 use \Models\Categories;
-use \Models\Search;
 
 class Homepage
 {

@@ -2,24 +2,30 @@
 
 namespace Models;
 
-class Videos extends Database {
+class Videos extends Database
+{
 
   public $table = 'videos';
 
-  // public function __construct() {
-  //   parent::__construct();
-
-
-  // }
-
-  function categoryVideos($id) {
-
+  //-------------Videos by categories------------
+  function categoryVideos($id)
+  {
     $result = self::$db->query("SELECT * FROM $this->table WHERE category_id = $id");
 
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
-  
-}
 
-?>
+  //--------------Search for videos-----------
+  public function searchContent($searchTerm)
+  {
+
+    $results = self::$db->query("SELECT * FROM $this->table WHERE name LIKE '%$searchTerm%'");
+
+    $results->fetch_all(MYSQLI_ASSOC);
+
+
+    // Return the search results
+    return $results;
+  }
+}

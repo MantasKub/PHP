@@ -2,26 +2,17 @@
 
 namespace Controllers;
 
-use \Models\Videos;
-use \Models\Categories;
-use \Models\Search;
-
-class SearchController
+class Search
 {
   public static function search()
   {
-    // Get the search term from the user input
-    $searchTerm = $_POST['searchTerm'];
 
-    // Call the model to search the database for content that matches the search term
-    $searchModel = new \Models\SearchModel();
-    $results = $searchModel->searchContent($searchTerm);
+    $searchTerm = $_GET['search'];
 
-    var_dump($results);
+    $videos = new \Models\Videos;
+    $results = $videos->searchContent($searchTerm);
 
-    // Pass the search results to the view
-    $searchView = new \Views\SearchView();
-    $searchView->displaySearchResults($results);
+    $results->fetch_all(MYSQLI_ASSOC);
 
     include 'views/search.php';
   }

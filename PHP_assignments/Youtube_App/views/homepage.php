@@ -36,8 +36,9 @@
             </li>
           <?php endforeach; ?>
         </ul>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="POST" enctype="multipart/form-data">
-          <input type="search" id="searchTerm" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="hidden" name="page" value="search" />
+          <input type="search" id="searchTerm" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" name="search">
         </form>
 
         <div class="text-end">
@@ -47,14 +48,16 @@
       </div>
     </div>
   </header>
-  <div class="container ms-1 d-flex">
+  <div class="container ms-1 mt-4 d-flex">
     <ul class="d-flex">
       <?php
       foreach ($videos as $video) : ?>
         <li>
           <div class="thumbnail mb-1 mt-3">
-            <img class="thumbnail_img" src="<?= $video['thumbnail_url'] ?>" />
-            <label><?= $video['name'] ?></label>
+            <a href="<?= $video['video_url']; ?> ">
+              <img class="thumbnail_img" src="<?= $video['thumbnail_url'] ?>" />
+              <label><?= $video['name'] ?></label>
+            </a>
           </div>
         </li>
 
@@ -62,7 +65,6 @@
     </ul>
   </div>
 
-  <div><?php include 'views/search.php'; ?></div>
 
 
 </body>
