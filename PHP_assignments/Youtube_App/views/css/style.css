@@ -23,6 +23,12 @@ body {
   transform: scale(1.1);
 }
 
+iframe {
+  width: 1200px;
+  height: 600px;
+  align-content: center;
+}
+
 ul {
   list-style-type: none;
 }
