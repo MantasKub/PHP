@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <title>Document</title>
 </head>
 
@@ -94,6 +95,7 @@
 
   $page = isset($_GET['page']) ? $_GET['page'] : '';
 
+
   switch ($page) {
     case 'category':
       Controllers\Homepage::byCategory($_GET['id']);
@@ -104,6 +106,24 @@
     case 'video':
       Controllers\Video::toVideo($_GET['id']);
       break;
+      //---------Login Routas--------
+    case 'login':
+      if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        return Controllers\Auth::loginIndex();
+        //-----------Login duomenų priėmimas-------------
+      } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        return Controllers\Auth::processLogin();
+      }
+      break;
+      //--------------Register routas------------
+    case 'register':
+      if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        return Controllers\Auth::registerIndex();
+      } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        return Controllers\Auth::processRegister();
+      }
+      break;
+      //----------Titulinis puslapis---------
     default:
       Controllers\Homepage::index();
   }

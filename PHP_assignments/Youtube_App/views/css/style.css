@@ -1,12 +1,15 @@
 body {
-  background-color: rgb(85, 110, 98);
   font-family: "Roboto Mono", monospace;
   background: radial-gradient(
     circle at center,
-    rgb(85, 110, 98),
-    rgb(56, 70, 63)
+    rgb(124, 165, 145),
+    rgb(72, 92, 82)
   );
   background-attachment: fixed;
+}
+
+header {
+  color: rgb(18, 22, 20);
 }
 
 .thumbnail_img {
