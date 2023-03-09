@@ -13,7 +13,26 @@ class Auth
 
   public static function processLogin()
   {
-    print_r($_POST);
+    $users = new Users;
+
+    $user = $users->getRecordsBy([
+      'email' => $_POST['email'],
+      'username' => $_POST['password']
+    ]);
+
+    if (!$user->recordsExists()) {
+      $error = [
+        'message' => 'Invalid email or password',
+        'status' => 'danger'
+      ];
+
+      return header('Location: ?page=login&' . http_build_query($error));
+    }
+
+    $_SESSION['user_id'] = $user->records[0]['id'];
+    $_SESSION['user_name'] = $user->records[0]['username'];
+
+    return header('Location: ?page=/');
   }
 
   public static function registerIndex()
@@ -21,10 +40,33 @@ class Auth
     include 'views/register.php';
   }
 
-  public static function processRegister()
+  public static function processRegistration()
   {
     $users = new Users;
 
-    $users->addRecord($_POST);
+    if (
+      $users
+      ->getRecordsBy([
+        'email' => $_POST['email'],
+        'username' => $_POST['username']
+      ], 'OR')
+      ->recordsExists()
+    ) {
+      $error = [
+        'message' => 'This user already exists',
+        'status' => 'danger'
+      ];
+
+      return header('Location: ?page=register&' . http_build_query($error));
+    } else {
+      $error = [
+        'message' => 'User successfuly registrated',
+        'status' => 'success'
+      ];
+
+      $users->addRecord($_POST);
+
+      return header('Location: ?page=login&' . http_build_query($error));
+    }
   }
 }

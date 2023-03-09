@@ -1,55 +1,54 @@
 <?php
-    if(empty($_SESSION['user']) OR $_SESSION['user']['role'] === '0') {
-      header('Location: ?page=login');
-      exit;
-    }
+if (empty($_SESSION['user']) or $_SESSION['user']['role'] === '0') {
+  header('Location: ?page=login');
+  exit;
+}
 
-    if(!empty($_POST)) {
-
-
-      //---------------Dainos coverio ikelimas-----------------
-      if(!is_dir('./uploads')) {
-        mkdir('./uploads');
-    }
+if (!empty($_POST)) {
 
 
-    $filename = explode('.', $_FILES['photo']['name']);
-    $filename = time() . '.' . $filename[count($filename) - 1];
+  //---------------Dainos coverio ikelimas-----------------
+  if (!is_dir('./uploads')) {
+    mkdir('./uploads');
+  }
 
-    $imageTypes = ['image/apng', 'image/avif', 'image/gif', 'image/jpeg', 'image/png', 'image/svg+xml', 'image/webp'];
 
-    if (!in_array($_FILES['photo']['type'], $imageTypes)) {
-        $params = [
-            'page' => 'admin',
-            'message' => 'Neteisingas failo formatas',
-            'status' => 'danger'
-        ];
+  $filename = explode('.', $_FILES['photo']['name']);
+  $filename = time() . '.' . $filename[count($filename) - 1];
 
-        header('Location: ?' . http_build_query($params));
-        exit;
-    }
+  $imageTypes = ['image/apng', 'image/avif', 'image/gif', 'image/jpeg', 'image/png', 'image/svg+xml', 'image/webp'];
 
-    move_uploaded_file($_FILES['photo']['tmp_name'], './uploads/' . $filename);
+  if (!in_array($_FILES['photo']['type'], $imageTypes)) {
+    $params = [
+      'page' => 'admin',
+      'message' => 'Neteisingas failo formatas',
+      'status' => 'danger'
+    ];
 
-    $_POST['photo'] = $filename;
+    header('Location: ?' . http_build_query($params));
+    exit;
+  }
 
-    //----------------------------------------------------------
+  move_uploaded_file($_FILES['photo']['tmp_name'], './uploads/' . $filename);
 
-      $query = vsprintf(
-        "INSERT INTO songs (name, author, album, year, link, photo)
+  $_POST['photo'] = $filename;
+
+  //----------------------------------------------------------
+
+  $query = vsprintf(
+    "INSERT INTO songs (name, author, album, year, link, photo)
         VALUES('%s', '%s', '%s', '%s', '%s', '%s')",
-        $_POST
-       );
-      $db->query($query);
+    $_POST
+  );
+  $db->query($query);
 
-      header('Location: ?page=admin');
-      exit;
+  header('Location: ?page=admin');
+  exit;
+}
 
-      }
 
-
-    $songs = $db->query("SELECT * FROM songs");
-    $songs = $songs->fetch_all(MYSQLI_ASSOC);
+$songs = $db->query("SELECT * FROM songs");
+$songs = $songs->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -79,9 +78,9 @@
         <input type="text" name="link" class="form-control" />
       </div>
       <div class="mb-3">
-            <label>Song cover:</label>
-            <input type="file" name="photo" class="form-control">
-        </div>
+        <label>Song cover:</label>
+        <input type="file" name="photo" class="form-control">
+      </div>
       <button class="btn">Create Song</button>
     </form>
   </div>
@@ -100,21 +99,20 @@
         </tr>
       </thead>
       <tbody>
-        <?php foreach($songs as $song): ?>
+        <?php foreach ($songs as $song) : ?>
           <tr>
-            <td><?=$song['id'] ?></td>
+            <td><?= $song['id'] ?></td>
             <td><img class="cover_photo" src="./uploads/<?= $song['photo'] ?>" alt="cover"></td>
-            <td><?=$song['name'] ?></td>
-            <td><?=$song['author'] ?></td>
-            <td><?=$song['album'] ?></td>
-            <td><?=$song['year'] ?></td>
-            <td><?=$song['link'] ?></td>
-            <td><?=$song['created_at'] ?></td>
+            <td><?= $song['name'] ?></td>
+            <td><?= $song['author'] ?></td>
+            <td><?= $song['album'] ?></td>
+            <td><?= $song['year'] ?></td>
+            <td><?= $song['link'] ?></td>
+            <td><?= $song['created_at'] ?></td>
             <td><button class="btn" name="delete_song">Delete</button></td>
           </tr>
-          <?php endforeach; ?>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>
 </div>
-

@@ -21,6 +21,10 @@
     </svg>
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+    <?php if (!empty($_GET['message'])) : ?>
+      <div class="alert alert-<?= $_GET['status']; ?>"><?= $_GET['message'] ?></div>
+    <?php endif; ?>
+
     <div class="form-floating">
       <input type="email" class="form-control" name="email" placeholder="name@example.com">
       <label>Email address</label>

@@ -3,7 +3,7 @@ body {
   background: radial-gradient(
     circle at center,
     rgb(124, 165, 145),
-    rgb(72, 92, 82)
+    rgb(43, 56, 50)
   );
   background-attachment: fixed;
 }

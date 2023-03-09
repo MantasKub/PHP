@@ -40,8 +40,12 @@
     </form>
 
     <div class="text-end">
-      <a href="?page=login" type="button" class="btn btn-outline-light me-2">Login</a>
-      <a href="?page=register" type="button" class="btn btn-warning">Sign-up</a>
+      <?php if (!isset($_SESSION['user_id'])) : ?>
+        <a href="?page=login" type="button" class="btn btn-outline-light me-2">Login</a>
+        <a href="?page=register" type="button" class="btn btn-warning">Sign-up</a>
+      <?php else : ?>
+        <a href="?page=seshdes" type="button" class="btn btn-danger">Log-out</a>
+      <?php endif; ?>
     </div>
   </div>
 </header>
