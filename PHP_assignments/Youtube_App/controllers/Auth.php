@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use \Models\Users;
+use \Models\Videos;
 
 class Auth
 {
@@ -67,6 +68,20 @@ class Auth
       $users->addRecord($_POST);
 
       return header('Location: ?page=login&' . http_build_query($error));
+    }
+  }
+
+  //Need to add comments to video with no log in
+
+  public static function checkSession()
+  {
+    $videos = new Videos;
+
+    if (isset($_SESSION)) {
+      $comments = $videos->getRecordsBy([
+        'comment_name' => $_POST['comment_name'],
+        'comment_comment' => $_POST['comment_comment']
+      ]);
     }
   }
 }
