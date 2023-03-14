@@ -58,8 +58,6 @@
           <a href="?page=video&id=<?= $video['id'] ?>">
             <img class="thumbnail_img" src="<?= $video['thumbnail_url'] ?>" />
             <label><?= $video['name'] ?></label>
-            <div class="video_uploader">
-            </div>
           </a>
         </div>
       </li>

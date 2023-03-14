@@ -18,7 +18,7 @@ class Auth
 
     $user = $users->getRecordsBy([
       'email' => $_POST['email'],
-      'username' => $_POST['password']
+      'password' => $_POST['password']
     ]);
 
     if (!$user->recordsExists()) {
@@ -68,20 +68,6 @@ class Auth
       $users->addRecord($_POST);
 
       return header('Location: ?page=login&' . http_build_query($error));
-    }
-  }
-
-  //Need to add comments to video with no log in
-
-  public static function checkSession()
-  {
-    $videos = new Videos;
-
-    if (isset($_SESSION)) {
-      $comments = $videos->getRecordsBy([
-        'comment_name' => $_POST['comment_name'],
-        'comment_comment' => $_POST['comment_comment']
-      ]);
     }
   }
 }

@@ -135,7 +135,7 @@
       Controllers\Homepage::index();
   }
 
-  // print_r($_SESSION['user_id']);
+  print_r($comment);
 
   ?>
 

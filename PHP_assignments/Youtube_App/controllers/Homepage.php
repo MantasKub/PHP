@@ -10,7 +10,7 @@ class Homepage
   public static function index()
   {
     $videos = new Videos();
-    $videos = $videos->getrecords();
+    $videos = $videos->getRecords();
 
     $categories = new Categories();
     $categories = $categories->getrecords();
