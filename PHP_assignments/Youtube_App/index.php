@@ -108,8 +108,8 @@
       Controllers\Search::search();
       break;
     case 'video':
-      Controllers\Comm::handleComments();
       Controllers\Video::toVideo($_GET['id']);
+      Controllers\Comm::handleComments();
       break;
       //---------Login Routas--------
     case 'login':
@@ -135,8 +135,6 @@
     default:
       Controllers\Homepage::index();
   }
-
-  print_r($_POST);
 
   ?>
 
