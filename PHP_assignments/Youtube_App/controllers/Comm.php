@@ -7,16 +7,13 @@ use \Models\Comments;
 class Comm
 {
 
-  public static function addComments()
+  public static function handleComments()
   {
     $comments = new Comments();
     $comments->addRecord($_POST);
-  }
 
-  public static function showComments($id)
-  {
     $comments = new Comments();
-    $comments = $comments->getComments($id);
+    $comments = $comments->getRecords();
 
     include 'views/comments.php';
   }

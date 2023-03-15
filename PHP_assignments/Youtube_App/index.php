@@ -108,6 +108,7 @@
       Controllers\Search::search();
       break;
     case 'video':
+      Controllers\Comm::handleComments();
       Controllers\Video::toVideo($_GET['id']);
       break;
       //---------Login Routas--------
@@ -135,7 +136,7 @@
       Controllers\Homepage::index();
   }
 
-  print_r($comments);
+  print_r($_POST);
 
   ?>
 

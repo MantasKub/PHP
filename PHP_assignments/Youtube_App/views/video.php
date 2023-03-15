@@ -7,5 +7,3 @@
     <?php endforeach; ?>
   </div>
 </div>
-
-<?php include 'views/comments.php'; ?>

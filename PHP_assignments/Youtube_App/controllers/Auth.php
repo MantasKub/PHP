@@ -3,7 +3,6 @@
 namespace Controllers;
 
 use \Models\Users;
-use \Models\Videos;
 
 class Auth
 {

@@ -7,21 +7,17 @@
         <label for="floatingInput">Name</label>
       </div>
       <div class="form-floating mb-2">
-        <form method="POST">
-          <input class="form-control" name="comment" />
-          <label for="floatingTextarea">Comments</label>
-          <button class="w-100 btn btn-lg btn-warning" type="submit">Submit</button>
-        </form>
+        <input type="text" class="form-control" name="comment" />
+        <label for="floatingTextarea">Comments</label>
       </div>
+      <button class="w-100 btn btn-lg btn-warning" type="submit">Submit</button>
     </form>
   </div>
   <div class="comments_area">
     <ul>
-      <?php foreach ($comments as $comment) : ?>
-        <li>
-          <?= $comment['com_name']; ?>
-        </li>
-      <?php endforeach; ?>
+      <li>
+        <?= $comment['comment']; ?>
+      </li>
     </ul>
   </div>
 </div>
