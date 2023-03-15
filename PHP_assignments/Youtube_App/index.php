@@ -135,7 +135,7 @@
       Controllers\Homepage::index();
   }
 
-  print_r($comment);
+  print_r($comments);
 
   ?>
 
