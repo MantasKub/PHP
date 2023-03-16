@@ -49,18 +49,23 @@
     </div>
   </div>
 </header>
-<div class="container ms-1 mt-4 d-flex">
-  <ul class="d-flex">
-    <?php
-    foreach ($videos as $video) : ?>
-      <li>
-        <div class="thumbnail mb-1 mt-3 d-flex">
-          <a href="?page=video&id=<?= $video['id'] ?>">
-            <img class="thumbnail_img" src="<?= $video['thumbnail_url'] ?>" />
-            <label><?= $video['name'] ?></label>
-          </a>
-        </div>
-      </li>
-    <?php endforeach; ?>
-  </ul>
+
+
+<div class="container ms-1 mt-4">
+  <a href="?page=addSong" type="button" class="btn btn-warning me-2">Add Song</a>
+  <div class="songs">
+    <ul class="d-flex">
+      <?php
+      foreach ($videos as $video) : ?>
+        <li>
+          <div class="thumbnail mb-1 mt-3 d-flex">
+            <a href="?page=video&id=<?= $video['id'] ?>">
+              <img class="thumbnail_img" src="<?= $video['thumbnail_url'] ?>" />
+              <label><?= $video['name'] ?></label>
+            </a>
+          </div>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
 </div>

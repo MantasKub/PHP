@@ -30,7 +30,16 @@
   <div class="comments_area">
     <ul>
       <?php foreach ($comments as $comment) : ?>
-        <li><?= $comment['comment']; ?></li>
+        <li>
+          <div class="card">
+            <div class="card-body d-flex">
+              <span>
+                <h5><?= $comment['com_name']; ?>:</h5>
+                <p><?= $comment['comment']; ?></p>
+              </span>
+            </div>
+          </div>
+        </li>
       <?php endforeach; ?>
     </ul>
   </div>

@@ -128,6 +128,14 @@
         return Controllers\Auth::processRegistration();
       }
       break;
+    case 'addSong':
+      // if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+      //   return Controllers\Auth::registerIndex();
+      // } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      //   return Controllers\Auth::processRegistration();
+      // }
+      include 'views/addSongForm.php';
+      break;
     case 'seshdes':
       session_destroy();
       header('Location: ?page=/');
@@ -135,9 +143,7 @@
     default:
       Controllers\Homepage::index();
   }
-
   ?>
-
 
 </body>
 
