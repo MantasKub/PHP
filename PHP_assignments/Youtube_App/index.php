@@ -129,12 +129,19 @@
       }
       break;
     case 'addSong':
-      // if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-      //   return Controllers\Auth::registerIndex();
-      // } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      //   return Controllers\Auth::processRegistration();
-      // }
-      include 'views/addSongForm.php';
+      if (isset($_SESSION['user_id'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+          return Controllers\Homepage::addVideoIndex();
+        } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          return Controllers\Homepage::processAddVideo();
+        }
+      } else if (($_SERVER['REQUEST_METHOD'] === 'GET') and (!isset($_SESSION['user_id']))) {
+        $error = [
+          'message' => 'Need to log in',
+          'status' => 'danger'
+        ];
+        return header('Location: ?page=/&' . http_build_query($error));
+      }
       break;
     case 'seshdes':
       session_destroy();
@@ -143,6 +150,8 @@
     default:
       Controllers\Homepage::index();
   }
+
+
   ?>
 
 </body>

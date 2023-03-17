@@ -50,7 +50,11 @@
   </div>
 </header>
 
-
+<div class="col-3 text-center m-auto">
+  <?php if (!empty($_GET['message'])) : ?>
+    <div class="alert alert-<?= $_GET['status']; ?>"><?= $_GET['message'] ?></div>
+  <?php endif; ?>
+</div>
 <div class="container ms-1 mt-4">
   <a href="?page=addSong" type="button" class="btn btn-warning me-2">Add Song</a>
   <div class="songs">

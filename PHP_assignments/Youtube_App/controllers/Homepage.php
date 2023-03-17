@@ -13,7 +13,7 @@ class Homepage
     $videos = $videos->getRecords();
 
     $categories = new Categories();
-    $categories = $categories->getrecords();
+    $categories = $categories->getRecords();
 
     include 'views/homepage.php';
   }
@@ -27,5 +27,18 @@ class Homepage
     $categories = $categories->getrecords();
 
     include 'views/homepage.php';
+  }
+
+  public static function addVideoIndex()
+  {
+    include  'views/addSongForm.php';
+  }
+
+  public static function processAddVideo()
+  {
+    $videos = new Videos();
+    $videos = $videos->addRecord($_POST);
+
+    return header('Location: ?page=/');
   }
 }
