@@ -1,20 +1,20 @@
-import { useEffect } from 'react';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/header/Header';
+import Products from './pages/Products';
+import AdminProducts from './pages/admin/Products';
 
 function App() {
-
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/')
-      .then(resp => resp.json())
-      .then(resp => {
-        console.log(resp);
-      })
-  }, [])
-
   return (
-    <div className="container py-3">
-      <h1>New products</h1>
-    </div>
+    <>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Products />} />
+          <Route path="/admin" element={<AdminProducts />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
