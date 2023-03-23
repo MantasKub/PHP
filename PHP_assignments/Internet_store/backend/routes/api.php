@@ -15,4 +15,7 @@ use App\Http\Controllers\ProductsController;
 |
 */
 
-Route::get('/', [ProductsController::class, 'index']);
+Route::group(['prefix' => 'products'], function () {
+  Route::get('/', [ProductsController::class, 'index']);
+  Route::delete('/{id}', [ProductsController::class, 'delete'])->where('id', '[0-9]+');
+});
