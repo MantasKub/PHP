@@ -1,23 +1,39 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Loading from '../../components/loading/Loading';
+import Message from '../../components/message/Message';
 
 function Products() {
   const [data, setData] = useState([]);
+  const [message, setMessage] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/')
-      .then(resp => setData(resp.data));
-  }, []);
+    axios.get('http://127.0.0.1:8000/api/products')
+      .then(resp => {
+        setLoading(false);
+        setData(resp.data)
+      });
+  }, [refresh]);
 
   const handleDelete = (id) => {
+    setLoading(true);
+
     axios.delete('http://127.0.0.1:8000/api/products/' + id)
-      .then(resp => console.log(resp.data));
+      .then(resp => {
+        setMessage(resp.data);
+        setLoading(false);
+        setRefresh(!refresh);
+      });
   }
 
   return (
     <>
+      <Loading show={loading} />
       <h1>Products list</h1>
+      <Message message={message} />
       <table className="table">
         <thead>
           <tr>
@@ -41,7 +57,7 @@ function Products() {
               <td>{product.price}</td>
               <td>{product.status ? 'Enabled' : 'Disabled'}</td>
               <td>{(new Date(product.created_at)).toLocaleString('lt-LT')}</td>
-              <td className="btn btn-danger" onClick={() => handleDelete(product.id)}>Delete</td>
+              <td><button className="btn btn-danger" onClick={() => handleDelete(product.id)}>Delete</button></td>
             </tr>
           )}
         </tbody>
