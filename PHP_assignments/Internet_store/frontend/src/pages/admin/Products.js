@@ -12,11 +12,12 @@ function Products() {
 
 
   useEffect(() => {
+    setLoading(true);
     axios.get('http://127.0.0.1:8000/api/products')
       .then(resp => {
         setData(resp.data)
         setLoading(false);
-      });
+      })
       .finally(() => setLoading(false));
   }, [refresh]);
 
@@ -64,6 +65,7 @@ function Products() {
               <td>{product.status ? 'Enabled' : 'Disabled'}</td>
               <td>{(new Date(product.created_at)).toLocaleString('lt-LT')}</td>
               <td><button className="btn btn-danger" onClick={() => handleDelete(product.id)}>Delete</button></td>
+              <td><Link to={'/admin/edit-product/' + product.id} className="btn btn-warning">Edit</Link></td>
             </tr>
           )}
         </tbody>
