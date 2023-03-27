@@ -1,6 +1,6 @@
 function Message({ message }) {
-  return message &&
-    <div className="alert alert-success">{message}</div>
+  return message.m &&
+    <div className={'alert alert-' + message.s}>{message.m}</div>
 }
 
 export default Message;

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../../components/loading/Loading';
 import Message from '../../components/message/Message';
@@ -13,9 +14,10 @@ function Products() {
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/products')
       .then(resp => {
-        setLoading(false);
         setData(resp.data)
+        setLoading(false);
       });
+      .finally(() => setLoading(false));
   }, [refresh]);
 
   const handleDelete = (id) => {
@@ -23,7 +25,7 @@ function Products() {
 
     axios.delete('http://127.0.0.1:8000/api/products/' + id)
       .then(resp => {
-        setMessage(resp.data);
+        setMessage({ m: resp.data, s: 'success' });
         setLoading(false);
         setRefresh(!refresh);
       });
@@ -32,6 +34,10 @@ function Products() {
   return (
     <>
       <Loading show={loading} />
+      <div className="s-flex justify-content-between align-items-center">
+        <h1>Products list</h1>
+        <Link to="/admin/new-product" className="btn btn-primary">New product</Link>
+      </div>
       <h1>Products list</h1>
       <Message message={message} />
       <table className="table">
