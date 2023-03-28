@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from '../components/header/Header';
 
 function Products() {
   const [data, setData] = useState([]);
@@ -21,6 +22,7 @@ function Products() {
 
   return (
     <>
+      <Header setData={setData} />
       <h1>New products</h1>
       <div className="row">
         {data.map(product =>

@@ -13,6 +13,24 @@ class ProductsController extends Controller
         return $data;
     }
 
+    public function singleProduct($id)
+    {
+        try {
+            return Products::find($id);
+        } catch (\Exception $e) {
+            return response('Can not get product information', 500);
+        }
+    }
+
+    public function search($keyword)
+    {
+        try {
+            return Products::where('name', 'LIKE', '%' . $keyword . '%')->get();
+        } catch (\Exception $e) {
+            return response('Can not find aby products', 500);
+        }
+    }
+
     public function create(Request $request)
     {
         try {
@@ -28,6 +46,25 @@ class ProductsController extends Controller
             return 'Product successfully created';
         } catch (\Exception $e) {
             return response('Can not save the product', 500);
+        }
+    }
+
+    public function edit(Request $request, $id)
+    {
+
+        try {
+            $product = Products::find($id);
+
+            $product->name = $request->name;
+            $product->sku = $request->sku;
+            $product->photo = $request->photo;
+            $product->warehouse_qty = $request->warehouse_qty;
+            $product->price = $request->price;
+
+            $product->save();
+            return 'Product successfully updated';
+        } catch (\Exception $e) {
+            return response('Can not edit this product', 500);
         }
     }
 

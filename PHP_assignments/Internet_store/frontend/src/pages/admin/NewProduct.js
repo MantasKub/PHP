@@ -15,8 +15,6 @@ function NewProduct() {
 
     const data = new FormData(e.target);
 
-    console.log(data);
-
     setLoading(true);
     axios.post('http://127.0.0.1:8000/api/products', data)
       .then(resp => {
