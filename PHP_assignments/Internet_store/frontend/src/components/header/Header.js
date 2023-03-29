@@ -36,8 +36,9 @@ function Header() {
               className="form-control"
               placeholder="Search..."
               aria-label="Search"
+              onKeyUp={(e) => setSearch(e.target.value)}
             />
-            <button className="btn btn-primary" onKeyUp={(e) => setSearch(e.target.value)}>Search</button>
+            <button className="btn btn-primary">Search</button>
           </form>
 
           <div className="dropdown text-end">

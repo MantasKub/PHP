@@ -1,6 +1,6 @@
 import './App.css';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 //Layout
 import MainLayout from './layouts/MainLayout';
 //Context(useState naudojimas visame projekte)

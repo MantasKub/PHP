@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 //------Atsakingas uztai kad galetume peradresuoti is vieno tasko i kita-------------
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Message from '../../components/message/Message';
-import Loading from '../../components/loading/Loading';
+import MainContext from '../../context/MainContext';
 
 
 
 function EditProduct() {
-  const [message, setMessage] = useState();
-  const [loading, setLoading] = useState(false);
+
+  const { setLoading, setMessage } = useContext(MainContext);
+
   const [data, setData] = useState({
     name: '',
     sku: '',
@@ -18,18 +18,27 @@ function EditProduct() {
     warehouse_qty: '',
     price: ''
   });
+
   const navigate = useNavigate();
+
   const { id } = useParams();
 
   useEffect(() => {
+
+    setLoading(true);
+
     axios.get('http://127.0.0.1:8000/api/products/' + id)
-      .then(resp => setData(resp.data));
+      .then(resp => setData(resp.data))
+      .finally(() => setLoading(false));
   }, []);
+
+  //-----------------------------------------------------------------------
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setLoading(true);
+
     axios.put('http://127.0.0.1:8000/api/products/' + id, data)
       .then(resp => {
         setMessage({ m: resp.data, s: 'success' });
@@ -48,10 +57,7 @@ function EditProduct() {
 
   return (
     <>
-      {id}
-      <Loading show={loading} />
       <h1>Edit product</h1>
-      <Message message={message} />
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label>Title</label>
