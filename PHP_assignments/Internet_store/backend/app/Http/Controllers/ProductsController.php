@@ -25,7 +25,8 @@ class ProductsController extends Controller
     public function search($keyword)
     {
         try {
-            return Products::where('name', 'LIKE', '%' . $keyword . '%')->get();
+            return Products::where('name', 'LIKE', '%' . $keyword . '%')
+                ->orWhere(['sku' => $keyword])->get();
         } catch (\Exception $e) {
             return response('Can not find aby products', 500);
         }

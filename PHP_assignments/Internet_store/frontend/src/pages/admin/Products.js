@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../../components/loading/Loading';
 import Message from '../../components/message/Message';
+import MainContext from '../../context/MainContext';
 
 function Products() {
-  const [data, setData] = useState([]);
-  const [message, setMessage] = useState(false);
-  const [refresh, setRefresh] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { setLoading, setData, refresh, setRefresh, setMessage } = useContext(MainContext);
 
 
   useEffect(() => {
@@ -40,7 +38,7 @@ function Products() {
         <Link to="/admin/new-product" className="btn btn-primary">New product</Link>
       </div>
       <h1>Products list</h1>
-      <Message message={message} />
+      <Message />
       <table className="table">
         <thead>
           <tr>

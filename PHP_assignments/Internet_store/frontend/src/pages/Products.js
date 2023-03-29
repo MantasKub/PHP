@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import axios from 'axios';
 import Header from '../components/header/Header';
+import MainContext from '../context/MainContext';
 
 function Products() {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  // const [refresh, setRefresh] = useState();
+  const { data, setData, refresh } = useContext(MainContext);
 
 
   useEffect(() => {
@@ -22,7 +25,7 @@ function Products() {
 
   return (
     <>
-      <Header setData={setData} />
+      <Header />
       <h1>New products</h1>
       <div className="row">
         {data.map(product =>

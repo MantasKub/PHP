@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useState, useContext } from 'react';
+import MainContext from '../../context/MainContext';
 
-function Header({ setData }) {
+function Header() {
+
+  const [search, setSearch] = useState('');
+  const { setData, setRefresh } = useContext(MainContext);
 
   const handleSearch = (e) => {
-    if (e.target.value !== '')
-      axios.get('http://127.0.0.1:8000/api/products/search/' + e.target.value)
-        .then(resp => setData(resp.data))
+    e.preventDefault();
+
+    if (search === '') return setRefresh(buvusi => !buvusi);
+    axios.get('http://127.0.0.1:8000/api/products/search/' + search)
+      .then(resp => setData(resp.data))
   }
 
   return (
@@ -24,13 +31,13 @@ function Header({ setData }) {
             <li><a href="#" className="nav-link px-2 link-dark">Products</a></li>
           </ul>
 
-          <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" onSubmit={handleSearch}>
             <input type="search"
               className="form-control"
               placeholder="Search..."
               aria-label="Search"
-              onKeyUp={handleSearch}
             />
+            <button className="btn btn-primary" onKeyUp={(e) => setSearch(e.target.value)}>Search</button>
           </form>
 
           <div className="dropdown text-end">
