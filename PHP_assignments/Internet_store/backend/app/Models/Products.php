@@ -9,8 +9,9 @@ class Products extends Model
 {
     use HasFactory;
 
-    public function products()
+    public function categories()
     {
-        return $this->belongsToMany(Products::class, 'product_categories');
+        //'category_id', 'producuct_id' - įvardinu nes modelius sukūriau daugyskaita ir neatitinka pavadinimo. Tokiu būdu nurodau stulpelius.
+        return $this->belongsToMany(Categories::class, 'product_categories', 'product_id', 'category_id');
     }
 }

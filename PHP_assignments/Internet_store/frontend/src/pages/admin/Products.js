@@ -45,6 +45,7 @@ function Products() {
             <th>Balance</th>
             <th>Price</th>
             <th>Status</th>
+            <th>Categories</th>
             <th>Creation</th>
             <th></th>
           </tr>
@@ -58,6 +59,7 @@ function Products() {
               <td>{item.warehouse_qty}</td>
               <td>{item.price}</td>
               <td>{item.status ? 'Enabled' : 'Disabled'}</td>
+              <td>{item.categories.map(cat => cat.name).join(',')}</td>
               <td>{(new Date(item.created_at)).toLocaleString('lt-LT')}</td>
               <td>
                 <AdminTableButtons id={item.id} link="product" deleteFn={handleDelete} />
