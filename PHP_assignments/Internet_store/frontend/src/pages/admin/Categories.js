@@ -4,14 +4,14 @@ import axios from 'axios';
 import MainContext from '../../context/MainContext';
 import AdminTableButtons from '../../components/adminTableButtons/AdminTableButtons';
 
-function Products() {
+function Categories() {
   const { setLoading, refresh, setRefresh, setMessage } = useContext(MainContext);
   const [data, setData] = useState([]);
 
 
   useEffect(() => {
     setLoading(true);
-    axios.get('http://127.0.0.1:8000/api/products')
+    axios.get('http://127.0.0.1:8000/api/categories')
       .then(resp => {
         setData(resp.data)
         setLoading(false);
@@ -22,7 +22,7 @@ function Products() {
   const handleDelete = (id) => {
     setLoading(true);
 
-    axios.delete('http://127.0.0.1:8000/api/products/' + id)
+    axios.delete('http://127.0.0.1:8000/api/categories/' + id)
       .then(resp => {
         setMessage({ m: resp.data, s: 'success' });
         setRefresh(!refresh);
@@ -30,22 +30,19 @@ function Products() {
       .finally(() => setLoading(false));
   }
 
+
   return (
     <>
       <div className="s-flex justify-content-between align-items-center">
-        <h1>Products list</h1>
-        <Link to="/admin/new-product" className="btn btn-primary">New product</Link>
+        <h1>Categories list</h1>
+        <Link to="/admin/new-category" className="btn btn-primary">New category</Link>
       </div>
       <table className="table">
         <thead>
           <tr>
             <th>#</th>
             <th>Title</th>
-            <th>SKU</th>
-            <th>Balance</th>
-            <th>Price</th>
-            <th>Status</th>
-            <th>Creation</th>
+            <th>Creation date</th>
             <th></th>
           </tr>
         </thead>
@@ -54,20 +51,17 @@ function Products() {
             <tr key={item.id}>
               <td>{item.id}</td>
               <td>{item.name}</td>
-              <td>{item.sku}</td>
-              <td>{item.warehouse_qty}</td>
-              <td>{item.price}</td>
-              <td>{item.status ? 'Enabled' : 'Disabled'}</td>
               <td>{(new Date(item.created_at)).toLocaleString('lt-LT')}</td>
               <td>
-                <AdminTableButtons id={item.id} link="product" deleteFn={handleDelete} />
+                <AdminTableButtons id={item.id} link="category" deleteFn={handleDelete} />
               </td>
             </tr>
           )}
         </tbody>
       </table>
     </>
-  );
+  )
+
 }
 
-export default Products;
+export default Categories;

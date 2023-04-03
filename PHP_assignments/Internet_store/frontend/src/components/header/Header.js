@@ -21,14 +21,12 @@ function Header() {
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <Link to="/" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-            <h6>Name</h6>
+            <h6>Home</h6>
           </Link>
 
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><Link to="/admin" className="nav-link px-2 link-secondary">Admin</Link></li>
-            <li><a href="#" className="nav-link px-2 link-dark">Inventory</a></li>
-            <li><a href="#" className="nav-link px-2 link-dark">Customers</a></li>
-            <li><a href="#" className="nav-link px-2 link-dark">Products</a></li>
+            <li><Link to="/admin/categories" className="nav-link px-2 link-secondary">Categories</Link></li>
           </ul>
 
           <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" onSubmit={handleSearch}>
