@@ -16,11 +16,12 @@ function EditProduct() {
     sku: '',
     photo: '',
     warehouse_qty: '',
-    price: ''
+    price: '',
+    categories: []
   });
 
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -30,6 +31,9 @@ function EditProduct() {
     axios.get('http://127.0.0.1:8000/api/products/' + id)
       .then(resp => setData(resp.data))
       .finally(() => setLoading(false));
+
+    axios.get('http://127.0.0.1:8000/api/categories/')
+      .then(resp => setCategories(resp.data))
   }, []);
 
   //-----------------------------------------------------------------------
@@ -51,7 +55,20 @@ function EditProduct() {
   }
 
   const handleField = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value })
+
+    if (e.target.name === 'categories') {
+
+      if (e.target.checked) {
+        data.categories.push(e.target.value);
+      } else {
+        const index = data.categories.indexOf(e.target.value);
+        data.categories.splice(index, 1);
+      }
+
+      return setData({ ...data });
+    }
+
+    setData({ ...data, [e.target.name]: e.target.value });
   }
 
 
@@ -107,6 +124,22 @@ function EditProduct() {
             onChange={handleField}
             required
           />
+        </div>
+        <div className="mb-3">
+          {categories.map(item =>
+            <div key={item.id}>
+              <label>
+                <input type="checkbox"
+                  name="categories"
+                  className="form-check-input me-2"
+                  value={item.id}
+                  onChange={handleField}
+                  checked={data.categories.find(el => el.id === item.id)}
+                />
+                {item.name}
+              </label>
+            </div>
+          )}
         </div>
         <button className="btn btn-primary">Save</button>
       </form>

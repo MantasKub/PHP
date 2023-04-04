@@ -1,6 +1,7 @@
 import { useEffect, useContext } from 'react';
 import axios from 'axios';
 import MainContext from '../context/MainContext';
+import Product from '../components/product/Product';
 
 function Products() {
   // const [data, setData] = useState([]);

@@ -12,7 +12,8 @@ function MainLayout(props) {
 
   useEffect(() => {
     setMessage(false);
-  }, [navigation])
+  }, [navigation]);
+
   return (
     <>
       <Loading />

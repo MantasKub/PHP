@@ -29,7 +29,7 @@ function Header() {
             <li><Link to="/admin/categories" className="nav-link px-2 link-secondary">Categories</Link></li>
           </ul>
 
-          <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" onSubmit={handleSearch}>
+          <form className="mb-3 mb-lg-0 me-lg-3 input-group w-25" role="search" onSubmit={handleSearch}>
             <input type="search"
               className="form-control"
               placeholder="Search..."
