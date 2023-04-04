@@ -7,12 +7,14 @@ import MainLayout from './layouts/MainLayout';
 import MainContext from './context/MainContext';
 //Pages
 import Products from './pages/Products';
+import Order from './pages/Order';
 import AdminProducts from './pages/admin/Products';
 import NewProduct from './pages/admin/ProductNew';
 import EditProduct from './pages/admin/ProductEdit';
 import Categories from './pages/admin/Categories';
 import NewCategory from './pages/admin/CategoriesNew';
 import EditCategories from './pages/admin/CategoriesEdit';
+import Orders from './pages/admin/Orders';
 
 function App() {
 
@@ -34,6 +36,7 @@ function App() {
           <MainLayout>
             <Routes>
               <Route path="/" element={<Products />} />
+              <Route path="/:productId/:productQty" element={<Order />} />
               <Route path="/admin" >
                 <Route index element={<AdminProducts />} />
                 <Route path="new-product" element={<NewProduct />} />
@@ -41,6 +44,7 @@ function App() {
                 <Route path="categories" element={<Categories />} />
                 <Route path="new-category" element={<NewCategory />} />
                 <Route path="edit-category/:id" element={<EditCategories />} />
+                <Route path="orders" element={<Orders />} />
               </Route>
             </Routes>
           </MainLayout>

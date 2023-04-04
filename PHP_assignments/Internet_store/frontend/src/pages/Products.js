@@ -31,11 +31,7 @@ function Products() {
       <h1>New products</h1>
       <div className="row">
         {data.map(product =>
-          <div className="col-4" key={product.id}>
-            <img src={product.photo}
-              alt={product.name} />
-            <h4>{product.name}</h4>
-          </div>
+          <Product key={product.id} data={product} />
         )}
       </div>
     </>

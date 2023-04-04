@@ -27,6 +27,7 @@ function Header() {
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><Link to="/admin" className="nav-link px-2 link-secondary">Admin</Link></li>
             <li><Link to="/admin/categories" className="nav-link px-2 link-secondary">Categories</Link></li>
+            <li><Link to="/admin/orders" className="nav-link px-2 link-secondary">Orders</Link></li>
           </ul>
 
           <form className="mb-3 mb-lg-0 me-lg-3 input-group w-25" role="search" onSubmit={handleSearch}>

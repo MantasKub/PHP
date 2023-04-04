@@ -46,7 +46,7 @@ function EditProduct() {
     axios.put('http://127.0.0.1:8000/api/products/' + id, data)
       .then(resp => {
         setMessage({ m: resp.data, s: 'success' });
-        setTimeout(() => navigate('/admin'), 200);
+        setTimeout(() => navigate('/admin'), 2000);
       })
       .catch(error => {
         setMessage({ m: error.response.data, s: 'danger' })
