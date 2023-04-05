@@ -64,13 +64,13 @@ function Orders() {
               <td>{item.shipping_method === 1 ? 'Pickup at DPD post machine' : 'Home delivery'}</td>
               <td>
                 <div className="form-check form-switch">
-                  <input className="form-check-input"
-                    type="checkbox"
-                    role="switch"
-                    onClick={() => handleChange(item.id, item.is_completed)}
-                    id={!item.is_completed ? 'flexSwitchCheckDefault' : 'flexSwitchCheckChecked'}
-                  />
-                  <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+                  <label className="form-check-label">
+                    <input className="form-check-input"
+                      type="checkbox"
+                      role="switch"
+                      onClick={() => handleChange(item.id, item.is_completed)}
+                      checked={item.is_completed}
+                    />
                     {!item.is_completed ? 'Being prepared' : 'Shipped'}
                   </label>
                 </div>
@@ -78,7 +78,7 @@ function Orders() {
             </tr>
           )}
         </tbody>
-      </table>
+      </table >
     </>
   );
 }
