@@ -15,6 +15,7 @@ import Categories from './pages/admin/Categories';
 import NewCategory from './pages/admin/CategoriesNew';
 import EditCategories from './pages/admin/CategoriesEdit';
 import Orders from './pages/admin/Orders';
+import Category from './pages/Category';
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
           <MainLayout>
             <Routes>
               <Route path="/" element={<Products />} />
+              <Route path="/category/:id" element={<Category />} />
               <Route path="/:productId/:productQty" element={<Order />} />
               <Route path="/admin" >
                 <Route index element={<AdminProducts />} />

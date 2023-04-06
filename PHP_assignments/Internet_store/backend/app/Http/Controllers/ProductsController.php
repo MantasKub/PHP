@@ -29,7 +29,16 @@ class ProductsController extends Controller
             return Products::where('name', 'LIKE', '%' . $keyword . '%')
                 ->orWhere(['sku' => $keyword])->get();
         } catch (\Exception $e) {
-            return response('Can not find aby products', 500);
+            return response('Can not find any products', 500);
+        }
+    }
+
+    public function order($field, $order)
+    {
+        try {
+            return Products::with('categories')->orderBy($field, $order)->get();
+        } catch (\Exception $e) {
+            return response('Can not get any products', 500);
         }
     }
 

@@ -68,7 +68,7 @@ function Orders() {
                     <input className="form-check-input"
                       type="checkbox"
                       role="switch"
-                      onClick={() => handleChange(item.id, item.is_completed)}
+                      onChange={() => handleChange(item.id, item.is_completed)}
                       checked={item.is_completed}
                     />
                     {!item.is_completed ? 'Being prepared' : 'Shipped'}

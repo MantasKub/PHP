@@ -18,6 +18,7 @@ function Product({ data }) {
         alt={data.name}
       />
       <h4>{data.name}</h4>
+      <h5>€ {data.price}</h5>
       <form className="py-2 input-group mb-3"
         onSubmit={handleSubmit}
       >

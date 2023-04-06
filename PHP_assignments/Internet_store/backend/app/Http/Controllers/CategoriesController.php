@@ -16,6 +16,15 @@ class CategoriesController extends Controller
         }
     }
 
+    public function categoryProducts($id)
+    {
+        try {
+            return Categories::with('products')->find($id);
+        } catch (\Exception $e) {
+            return response('Can not get category information', 500);
+        }
+    }
+
     public function singleCategory($id)
     {
         try {
