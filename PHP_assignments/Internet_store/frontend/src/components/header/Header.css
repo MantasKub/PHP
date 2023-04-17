@@ -1,3 +1,7 @@
+header {
+  background: #99592a;
+}
+
 .dropdown {
   position: relative;
 }
@@ -10,4 +14,24 @@
 
 .dropdown-toggle {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #4d331f;
+  font-size: 17px;
+}
+
+h6 {
+  margin-bottom: 0;
+  font-size: 24px;
+}
+
+header .btn {
+  background-color: #4d331f;
+  border-color: #4d331f;
+}
+
+.main_logo {
+  width: 250px;
 }

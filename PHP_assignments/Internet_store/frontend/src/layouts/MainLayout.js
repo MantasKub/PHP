@@ -4,6 +4,8 @@ import Header from '../components/header/Header';
 import Loading from '../components/loading/Loading';
 import Message from '../components/message/Message';
 import MainContext from '../context/MainContext';
+import SideBar from '../components/sideBar/SideBar';
+import './MainLayout.css';
 
 function MainLayout(props) {
 
@@ -18,9 +20,12 @@ function MainLayout(props) {
     <>
       <Loading />
       <Header />
-      <div className="container">
-        <Message />
-        {props.children}
+      <div class="main d-flex">
+        <SideBar />
+        <div className="container">
+          <Message />
+          {props.children}
+        </div>
       </div>
     </>
   )
