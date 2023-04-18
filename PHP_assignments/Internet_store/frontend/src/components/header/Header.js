@@ -33,7 +33,7 @@ function Header() {
             aria-label="Search"
             onKeyUp={(e) => setSearch(e.target.value)}
           />
-          <button className="btn btn-primary ms-2">Search</button>
+          <button className="brown_button btn ms-2">Search</button>
         </form>
         <div className="dropdown ms-2">
           <div

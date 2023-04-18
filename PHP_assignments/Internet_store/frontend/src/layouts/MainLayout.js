@@ -22,7 +22,7 @@ function MainLayout(props) {
       <Header />
       <div class="main d-flex">
         <SideBar />
-        <div className="container">
+        <div className="container mt-3 ms-5 me-5">
           <Message />
           {props.children}
         </div>

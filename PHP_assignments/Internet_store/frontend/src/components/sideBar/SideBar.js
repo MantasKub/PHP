@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import './SideBar.css'
 
 function SideBar() {
 
@@ -13,14 +14,16 @@ function SideBar() {
 
 
   return (
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
-      <Link to="/" className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-        <h6>Home</h6>
-      </Link>
+    <div className="side_bar d-flex flex-column flex-shrink-0 p-3">
+      <div className="home">
+        <Link to="/" className="d-flex align-items-center mb-2 mb-lg-0">
+          <h2 className="mb-2">Home</h2>
+        </Link>
+      </div>
       <h4>Categories</h4>
-      <ul class="nav nav-pills flex-column mb-auto">
+      <ul className="nav nav-pills flex-column mb-auto">
         {categories.map(el =>
-          <li key={el.id}><Link to={'/category/' + el.id} className=" px-2 link-dar">{el.name}</Link></li>
+          <li key={el.id}><Link to={'/category/' + el.id} className="category px-2 link-dar">{el.name}</Link></li>
         )}
       </ul>
     </div>

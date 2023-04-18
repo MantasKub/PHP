@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Product.css';
 
 function Product({ data }) {
   const [qty, setQty] = useState(1);
@@ -12,13 +13,17 @@ function Product({ data }) {
   }
 
   return (
-    <div className="col-4" key={data.id}>
-      <img
-        src={data.photo}
-        alt={data.name}
-      />
-      <h4>{data.name}</h4>
-      <h5>€ {data.price}</h5>
+    <div className="col-3" key={data.id}>
+      <div className="product_img">
+        <img
+          src={data.photo}
+          alt={data.name}
+        />
+      </div>
+      <div className="product_info">
+        <h4>{data.name}</h4>
+        <h5>€ {data.price}</h5>
+      </div>
       <form className="py-2 input-group mb-3"
         onSubmit={handleSubmit}
       >
@@ -27,7 +32,7 @@ function Product({ data }) {
           className="form-control"
           onChange={(e) => setQty(e.target.value)}
         />
-        <button className="btn btn-primary">Order</button>
+        <button className="btn brown_button">Order</button>
       </form>
     </div>
   )

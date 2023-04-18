@@ -2,6 +2,7 @@ import { useEffect, useContext, useState } from 'react';
 import axios from 'axios';
 import MainContext from '../context/MainContext';
 import Product from '../components/product/Product';
+import '../components/product/Product.css';
 
 function Products() {
   const [sort, setSort] = useState('');
@@ -34,7 +35,7 @@ function Products() {
 
   return (
     <>
-      <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-between align-items-center ms-3">
         <h1>New products</h1>
         <div className="sort d-flex gap-2">
           <select
