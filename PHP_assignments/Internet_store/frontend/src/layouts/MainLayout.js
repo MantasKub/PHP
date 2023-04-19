@@ -6,6 +6,7 @@ import Message from '../components/message/Message';
 import MainContext from '../context/MainContext';
 import SideBar from '../components/sideBar/SideBar';
 import './MainLayout.css';
+import Footer from '../components/footer/Footer';
 
 function MainLayout(props) {
 
@@ -20,13 +21,14 @@ function MainLayout(props) {
     <>
       <Loading />
       <Header />
-      <div class="main d-flex">
+      <div className="main d-flex">
         <SideBar />
         <div className="container mt-3 ms-5 me-5">
           <Message />
           {props.children}
         </div>
       </div>
+      <Footer />
     </>
   )
 }

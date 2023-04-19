@@ -9,7 +9,7 @@ header {
 .dropdown-menu {
   position: absolute;
   top: 40px;
-  left: -50px;
+  left: -100px;
 }
 
 .dropdown-toggle {

@@ -21,7 +21,7 @@ function SideBar() {
         </Link>
       </div>
       <h4>Categories</h4>
-      <ul className="nav nav-pills flex-column mb-auto">
+      <ul className="categories_ul nav nav-pills flex-column mb-auto">
         {categories.map(el =>
           <li key={el.id}><Link to={'/category/' + el.id} className="category px-2 link-dar">{el.name}</Link></li>
         )}
